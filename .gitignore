@@ -9,6 +9,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+node_modules
 
 # Ignore .vscode file.
 .vscode
