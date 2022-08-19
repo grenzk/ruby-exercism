@@ -8,8 +8,8 @@ class Palindromes
     @min_factor = min_factor
   end
 
-  def reverse_digits(num)
-    num.to_s.reverse.to_i
+  def palindrome?(num)
+    num.to_s.reverse.to_i == num
   end
 
   def generate
@@ -19,7 +19,7 @@ class Palindromes
       .to_a
       .repeated_combination(2) { |pair| products << pair[0] * pair[1] }
 
-    products.uniq.select { |num| reverse_digits(num) == num }
+    products.uniq.select { |num| palindrome?(num) }
   end
 
   def largest
