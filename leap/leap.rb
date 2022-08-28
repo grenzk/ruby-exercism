@@ -5,4 +5,3 @@ class Year
     false
   end
 end
-

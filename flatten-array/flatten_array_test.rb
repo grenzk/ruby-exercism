@@ -29,13 +29,15 @@ class FlattenArrayTest < Minitest::Test
 
   def test_6_level_nest_list_with_nil_values
     # skip
-    flat_array = FlattenArray.flatten([0, 2, [[2, 3], 8, [[100]], nil, [[nil]]], -2])
+    flat_array =
+      FlattenArray.flatten([0, 2, [[2, 3], 8, [[100]], nil, [[nil]]], -2])
     assert_equal [0, 2, 2, 3, 8, 100, -2], flat_array
   end
 
   def test_all_values_in_nested_list_are_nil
     # skip
-    flat_array = FlattenArray.flatten([nil, [[[nil]]], nil, nil, [[nil, nil], nil], nil])
+    flat_array =
+      FlattenArray.flatten([nil, [[[nil]]], nil, nil, [[nil, nil], nil], nil])
     assert_empty flat_array
   end
 end

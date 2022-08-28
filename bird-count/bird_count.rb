@@ -1,14 +1,6 @@
 class BirdCount
   def self.last_week
-    bird_count_last_week = [
-      0, 
-      2, 
-      5, 
-      3, 
-      7, 
-      8, 
-      4
-    ]
+    bird_count_last_week = [0, 2, 5, 3, 7, 8, 4]
   end
 
   def initialize(birds_per_day)
@@ -24,10 +16,10 @@ class BirdCount
   end
 
   def busy_days
-    @birds_per_day.count { |number| number >= 5}  
+    @birds_per_day.count { |number| number >= 5 }
   end
 
   def day_without_birds?
-    @birds_per_day.any? { |number| number == 0}
+    @birds_per_day.any? { |number| number == 0 }
   end
 end

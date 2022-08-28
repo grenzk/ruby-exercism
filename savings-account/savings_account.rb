@@ -3,7 +3,7 @@ module SavingsAccount
     case
     when balance < 0
       -3.213
-    when balance < 1000 
+    when balance < 1000
       0.5
     when balance >= 1000 && balance < 5000
       1.621
@@ -19,7 +19,7 @@ module SavingsAccount
   def self.years_before_desired_balance(current_balance, desired_balance)
     years = 0
     balance = current_balance
-    while balance < desired_balance do
+    while balance < desired_balance
       balance = self.annual_balance_update(balance)
       years += 1
     end

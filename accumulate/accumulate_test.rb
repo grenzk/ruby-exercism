@@ -8,9 +8,7 @@ class ArrayTest < Minitest::Test
 
   def test_accumulate_squares
     # skip
-    result = [1, 2, 3].accumulate do |number|
-      number * number
-    end
+    result = [1, 2, 3].accumulate { |number| number * number }
     assert_equal [1, 4, 9], result
   end
 
@@ -28,11 +26,10 @@ class ArrayTest < Minitest::Test
 
   def test_accumulate_recursively
     # skip
-    result = %w[a b c].accumulate do |char|
-      %w[1 2 3].accumulate do |digit|
-        "#{char}#{digit}"
+    result =
+      %w[a b c].accumulate do |char|
+        %w[1 2 3].accumulate { |digit| "#{char}#{digit}" }
       end
-    end
     assert_equal [%w[a1 a2 a3], %w[b1 b2 b3], %w[c1 c2 c3]], result
   end
 
@@ -44,12 +41,10 @@ class ArrayTest < Minitest::Test
     assert_equal copy, original
   end
 
-  def test_accumulate_when_block_is_deferred 
+  def test_accumulate_when_block_is_deferred
     # skip
     accumulate_enumerator = [1, 2, 3].accumulate
-    accumulated_result = accumulate_enumerator.map do |number|
-      number * number
-    end
+    accumulated_result = accumulate_enumerator.map { |number| number * number }
     assert_equal [1, 4, 9], accumulated_result
   end
 end

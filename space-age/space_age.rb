@@ -4,7 +4,7 @@ class SpaceAge
   end
 
   def on_earth
-    @age_in_seconds.to_f / 31557600
+    @age_in_seconds.to_f / 31_557_600
   end
 
   def on_mercury

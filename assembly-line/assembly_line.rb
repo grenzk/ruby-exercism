@@ -13,7 +13,7 @@ class AssemblyLine
     elsif @speed == 10
       @speed * 221 * 0.77
     else
-      puts "ERROR: The number is out of bounds."
+      puts 'ERROR: The number is out of bounds.'
     end
   end
 

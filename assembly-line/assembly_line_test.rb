@@ -39,7 +39,9 @@ class AssemblyLineTest < Minitest::Test
   end
 
   def test_production_rate_per_hour_for_speed_ten
-    assert_in_delta 1701.7, AssemblyLine.new(10).production_rate_per_hour, 0.0001
+    assert_in_delta 1701.7,
+                    AssemblyLine.new(10).production_rate_per_hour,
+                    0.0001
   end
 
   def test_working_items_per_minute_for_speed_one
