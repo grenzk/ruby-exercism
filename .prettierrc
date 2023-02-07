@@ -1,3 +1,4 @@
 {
-  "rubyPlugins": "plugin/single_quotes"
+  "singleQuote": true,
+  "trailingComma": "none"
 }
