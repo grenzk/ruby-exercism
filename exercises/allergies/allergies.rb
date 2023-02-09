@@ -11,7 +11,7 @@ class Allergies
     'chocolate' => 32,
     'pollen' => 64,
     'cats' => 128
-  }
+  }.freeze
 
   attr_reader :score, :allergy_scores
 
