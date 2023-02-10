@@ -21,8 +21,6 @@ class Allergies
   end
 
   def allergic_to?(item)
-    return false if list.empty?
-
     list.include?(item)
   end
 
