@@ -23,7 +23,7 @@ class Allergies
   def allergic_to?(item)
     return false if allergy_scores.empty?
 
-    generate_addends.map { |score| ITEMS.key(score) }.include?(item)
+    list.include?(item)
   end
 
   def list
@@ -48,6 +48,7 @@ class Allergies
 
   def generate_addends
     combinations = []
+
     (1..allergy_scores.length).each do |i|
       allergy_scores
         .combination(i)
