@@ -2,7 +2,7 @@ module SavingsAccount
   def self.interest_rate(balance)
     case
     when balance < 0
-      -3.213
+      3.213
     when balance < 1000
       0.5
     when balance >= 1000 && balance < 5000
