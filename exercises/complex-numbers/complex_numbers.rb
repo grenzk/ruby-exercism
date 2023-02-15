@@ -3,20 +3,13 @@
 class ComplexNumber
   attr_reader :real, :imaginary
 
-  def initialize(real, imaginary)
+  def initialize(real, imaginary = 0)
     @real = real
     @imaginary = imaginary
   end
 
   def ==(other)
-    real == other.real && imaginary == other.imaginary
-  end
-
-  def *(other)
-    ComplexNumber.new(
-      (real * other.real - imaginary * other.imaginary),
-      (real * other.imaginary + imaginary * other.real)
-    )
+    (self - other).abs < 1e-15
   end
 
   def +(other)
@@ -25,6 +18,13 @@ class ComplexNumber
 
   def -(other)
     ComplexNumber.new((real - other.real), (imaginary - other.imaginary))
+  end
+
+  def *(other)
+    ComplexNumber.new(
+      (real * other.real - imaginary * other.imaginary),
+      (real * other.imaginary + imaginary * other.real)
+    )
   end
 
   def /(other)
@@ -46,8 +46,8 @@ class ComplexNumber
 
   def exp
     ComplexNumber.new(
-      Math.exp(real) * Math.cos(imaginary).to_i,
-      Math.exp(real) * Math.sin(imaginary).to_i
+      Math.exp(real) * Math.cos(imaginary),
+      Math.exp(real) * Math.sin(imaginary)
     )
   end
 end
