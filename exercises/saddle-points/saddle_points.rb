@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class Matrix
-  attr_reader :string
+  attr_reader :string, :row_values, :column_values
 
   def initialize(string)
     @string = string
+    @row_values = rows.map(&:max)
+    @column_values = columns.map(&:min)
   end
 
   def rows
@@ -16,16 +18,14 @@ class Matrix
   end
 
   def saddle_points
-    row_values = rows.map(&:max)
-    column_values = columns.map(&:min)
-    points = row_values & column_values
+    values = row_values & column_values
 
-    if row_values.all? { |num| points.include?(num) }
-      return(
-        row_values.map.with_index { |num, idx| [idx, column_values.index(num)] }
-      )
+    values.each_with_object([]) do |value, points|
+      row_values.each_with_index do |row_value, i|
+        column_values.each_with_index do |column_value, j|
+          points << [i, j] if row_value == value && column_value == value
+        end
+      end
     end
-
-    points.map { |num| [row_values.index(num), column_values.index(num)] }
   end
 end
