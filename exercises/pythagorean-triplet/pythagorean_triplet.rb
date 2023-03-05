@@ -1,15 +1,8 @@
-# typed: true
 # frozen_string_literal: true
 
-require 'sorbet-runtime'
-
 class Triplet
-  extend T::Sig
-
-  sig { returns(T::Array[Integer]) }
   attr_reader :sides
 
-  sig { params(sides: Integer).void }
   def initialize(*sides)
     @sides = sides
   end
@@ -22,19 +15,19 @@ class Triplet
     sides.reduce(:*)
   end
 
-  sig { returns(T::Boolean) }
   def pythagorean?
-    T.must(sides.last)**2 == sides.first(2).map { |num| num**2 }.sum
+    sides.last**2 == sides.first(2).map { |num| num**2 }.sum
   end
 
   def self.where(max_factor:, min_factor: 1, sum: 0)
-    (min_factor..max_factor).each_with_object([]) do |a, triplets|
-      (a + 1..max_factor).each do |b|
-        (b + 1..max_factor).each do |c|
-          trio = new(a, b, c)
-          triplets << trio if trio.pythagorean? && (sum.zero? || trio.sum == sum)
-        end
+    triplets = []
+
+    (min_factor..max_factor)
+      .to_a
+      .combination(3) do |combo|
+        trio = new(combo[0], combo[1], combo[2])
+        triplets << trio if trio.pythagorean? && (sum.zero? || trio.sum == sum)
       end
-    end
+    triplets
   end
 end
