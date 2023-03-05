@@ -1,22 +1,24 @@
 # frozen_string_literal: true
 
 class Triplet
-  attr_reader :sides
+  attr_reader :a, :b, :c
 
-  def initialize(*sides)
-    @sides = sides
+  def initialize(a, b, c)
+    @a = a
+    @b = b
+    @c = c
   end
 
   def sum
-    sides.reduce(:+)
+    a + b + c
   end
 
   def product
-    sides.reduce(:*)
+    a * b * c
   end
 
   def pythagorean?
-    sides.last**2 == sides.first(2).map { |num| num**2 }.sum
+    a**2 + b**2 == c**2
   end
 
   def self.where(max_factor:, min_factor: 1, sum: 0)
