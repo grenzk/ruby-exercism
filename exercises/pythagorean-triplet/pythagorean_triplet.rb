@@ -18,18 +18,17 @@ class Triplet
   end
 
   def pythagorean?
-    a**2 + b**2 == c**2
+    (a**2 + b**2) == c**2
   end
 
   def self.where(max_factor:, min_factor: 1, sum: 0)
-    triplets = []
-
-    (min_factor..max_factor)
-      .to_a
-      .combination(3) do |combo|
-        trio = new(combo[0], combo[1], combo[2])
-        triplets << trio if trio.pythagorean? && (sum.zero? || trio.sum == sum)
+    (min_factor..max_factor).each_with_object([]) do |a, triplets|
+      (a + 1..max_factor).each do |b|
+        (b + 1..max_factor).each do |c|
+          trio = new(a, b, c)
+          triplets << trio if trio.pythagorean? && (sum.zero? || trio.sum == sum)
+        end
       end
-    triplets
+    end
   end
 end
