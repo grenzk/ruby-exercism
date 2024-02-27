@@ -2,14 +2,8 @@
 
 source 'https://rubygems.org'
 
-ruby '~> 3.2.1'
+gem 'ruby-lsp'
 
-group :development do
-  gem 'ruby-lsp', '~> 0.3.8', require: false
-  gem 'tapioca', require: false
-  gem 'sorbet'
-end
-
-gem 'sorbet-runtime'
+gem 'rubocop'
 
 gem 'minitest'
